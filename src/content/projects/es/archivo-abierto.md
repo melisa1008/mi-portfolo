@@ -1,6 +1,6 @@
 ---
-title: "Archivo abierto"
-description: "Una experiencia digital para descubrir una colección cultural."
+title: "[Archivo abierto]"
+description: "[Una experiencia digital para descubrir una colección cultural]"
 date: 2026-06-02
 tags: [Web, UX/UI]
 featured: true
