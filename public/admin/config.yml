@@ -1,0 +1,59 @@
+backend:
+  # Netlify Identity + Git Gateway: activa Identity y Git Gateway en Netlify al publicar.
+  name: git-gateway
+  branch: main
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog_es
+    label: "Blog · Español"
+    folder: src/content/blog/es
+    create: true
+    slug: "{{slug}}"
+    fields: &blog_fields
+      - { label: Título, name: title, widget: string }
+      - { label: Descripción, name: description, widget: text }
+      - { label: Fecha, name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Portada, name: cover, widget: image, required: false }
+      - { label: Borrador, name: draft, widget: boolean, default: false, required: false }
+      - { label: Contenido, name: body, widget: markdown }
+  - name: blog_en
+    label: "Blog · English"
+    folder: src/content/blog/en
+    create: true
+    slug: "{{slug}}"
+    fields: *blog_fields
+  - name: blog_fr
+    label: "Blog · Français"
+    folder: src/content/blog/fr
+    create: true
+    slug: "{{slug}}"
+    fields: *blog_fields
+  - name: projects_es
+    label: "Proyectos · Español"
+    folder: src/content/projects/es
+    create: true
+    slug: "{{slug}}"
+    fields: &project_fields
+      - { label: Título, name: title, widget: string }
+      - { label: Descripción, name: description, widget: text }
+      - { label: Fecha, name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Etiquetas, name: tags, widget: list }
+      - { label: Destacado, name: featured, widget: boolean, default: false }
+      - { label: Enlace externo, name: url, widget: string, required: false }
+      - { label: Imagen, name: image, widget: image, required: false }
+      - { label: Contenido, name: body, widget: markdown }
+  - name: projects_en
+    label: "Projects · English"
+    folder: src/content/projects/en
+    create: true
+    slug: "{{slug}}"
+    fields: *project_fields
+  - name: projects_fr
+    label: "Projets · Français"
+    folder: src/content/projects/fr
+    create: true
+    slug: "{{slug}}"
+    fields: *project_fields

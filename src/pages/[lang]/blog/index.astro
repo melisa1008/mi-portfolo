@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { isLang, languages, localeFromId, slugFromId, t, formatDate } from '../../../lib/i18n';
+export function getStaticPaths() { return languages.map(lang => ({ params: { lang } })); }
+const { lang } = Astro.params;
+if (!isLang(lang)) return Astro.redirect('/es/');
+const text = t(lang);
+const posts = (await getCollection('blog', ({id,data}) => localeFromId(id) === lang && !data.draft)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout lang={lang} title={`${text.blog} — Lumen`}><section class="page-head"><p class="eyebrow">{text.writing}</p><h1>{text.blog}</h1><p>{text.intro}</p></section><div class="listing">{posts.map(post => <article class="card"><p class="card-meta">{formatDate(post.data.date,lang)}</p><h2><a href={`/${lang}/blog/${slugFromId(post.id)}/`}>{post.data.title}</a></h2><p>{post.data.description}</p><a class="button-link" href={`/${lang}/blog/${slugFromId(post.id)}/`}>{text.read} →</a></article>)}</div></BaseLayout>
+<style>.listing{padding-bottom:40px}.listing .card{display:grid;grid-template-columns:160px 1fr;column-gap:30px}.listing .card-meta{grid-row:span 3}.listing h2{margin:0;font-size:34px}@media(max-width:600px){.listing .card{display:block}}</style>

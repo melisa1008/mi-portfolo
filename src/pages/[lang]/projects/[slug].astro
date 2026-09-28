@@ -1,0 +1,11 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { localeFromId, slugFromId, t, type Lang } from '../../../lib/i18n';
+export async function getStaticPaths() { const projects = await getCollection('projects'); return projects.map(project => ({ params: { lang: localeFromId(project.id), slug: slugFromId(project.id) }, props: { project } })); }
+const { project } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const text = t(lang);
+const { Content } = await render(project);
+---
+<BaseLayout lang={lang} title={`${project.data.title} — Lumen`} description={project.data.description}><article><header class="page-head"><p class="eyebrow">{text.portfolio}</p><h1>{project.data.title}</h1><p>{project.data.description}</p><div class="tags">{project.data.tags.map(tag => <span class="tag">{tag}</span>)}</div>{project.data.url && <a class="button-link" href={project.data.url} target="_blank">{text.view} ↗</a>}</header><div class="prose"><Content /></div><a class="button-link" href={`/${lang}/projects/`}>← {text.back}</a></article></BaseLayout>
