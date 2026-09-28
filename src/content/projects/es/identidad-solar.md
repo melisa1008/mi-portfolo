@@ -1,6 +1,6 @@
 ---
-title: "Identidad para Solar"
-description: "Una identidad cálida y flexible para un estudio de arquitectura local."
+title: "[Identidad para Solar]"
+description: "[Una identidad cálida y flexible para un estudio de arquitectura local]"
 date: 2026-08-12
 tags: [Branding, Dirección de arte]
 featured: true
