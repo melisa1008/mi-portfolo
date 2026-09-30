@@ -1,6 +1,7 @@
 backend:
-  # Netlify Identity + Git Gateway: activa Identity y Git Gateway en Netlify al publicar.
-  name: git-gateway
+  # El acceso se realiza con la cuenta de GitHub que tiene permiso sobre este repositorio.
+  name: github
+  repo: melisa1008/mi-portfolo
   branch: main
 
 media_folder: public/uploads
