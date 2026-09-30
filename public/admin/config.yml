@@ -7,6 +7,21 @@ media_folder: public/uploads
 public_folder: /uploads
 
 collections:
+  - name: appearance
+    label: "Apariencia"
+    files:
+      - name: site_appearance
+        label: "Fuentes de la web"
+        file: src/data/appearance.json
+        fields:
+          - label: "Combinación de fuentes"
+            name: fontStyle
+            widget: select
+            options:
+              - { label: "Elegante — Playfair Display + DM Sans", value: elegant }
+              - { label: "Moderna — Poppins", value: modern }
+              - { label: "Clásica — Cormorant Garamond + Montserrat", value: classic }
+              - { label: "Minimalista — Libre Baskerville + Inter", value: minimal }
   - name: blog_es
     label: "Blog · Español"
     folder: src/content/blog/es
