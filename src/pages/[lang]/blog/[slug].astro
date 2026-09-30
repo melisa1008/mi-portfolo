@@ -8,4 +8,4 @@ const lang = Astro.params.lang as Lang;
 const text = t(lang);
 const { Content } = await render(post);
 ---
-<BaseLayout lang={lang} title={`${post.data.title} — Lumen`} description={post.data.description}><article><header class="page-head"><p class="eyebrow">{text.writing} · {formatDate(post.data.date,lang)}</p><h1>{post.data.title}</h1><p>{post.data.description}</p></header><div class="prose"><Content /></div><a class="button-link" href={`/${lang}/blog/`}>← {text.back}</a></article></BaseLayout>
+<BaseLayout lang={lang} title={`${post.data.title} — Melisa`} description={post.data.description}><article><header class="page-head"><p class="eyebrow">{text.writing} · {formatDate(post.data.date,lang)}</p><h1>{post.data.title}</h1><p>{post.data.description}</p></header><div class="prose"><Content /></div><a class="button-link" href={`/${lang}/blog/`}>← {text.back}</a></article></BaseLayout>
