@@ -1,8 +1,13 @@
 ---
 ---
-<script>
-  const available = ['es', 'en', 'fr'];
-  const preferred = navigator.language.split('-')[0];
-  window.location.replace(`/${available.includes(preferred) ? preferred : 'es'}/`);
+<script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script is:inline>
+  // Netlify Identity uses the URL hash for password-recovery and email-confirmation links.
+  // Keep that hash on this page so its widget can display the corresponding form.
+  if (!window.location.hash) {
+    const available = ['es', 'en', 'fr'];
+    const preferred = navigator.language.split('-')[0];
+    window.location.replace(`/${available.includes(preferred) ? preferred : 'es'}/`);
+  }
 </script>
-<a href="/es/">Continuar</a>
+<p>Abriendo el acceso seguro…</p>
