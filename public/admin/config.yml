@@ -22,6 +22,11 @@ collections:
               - { label: "Moderna — Poppins", value: modern }
               - { label: "Clásica — Cormorant Garamond + Montserrat", value: classic }
               - { label: "Minimalista — Libre Baskerville + Inter", value: minimal }
+              - { label: "Suave — Playfair Display + Quicksand", value: soft }
+              - { label: "Editorial — DM Serif Display + Manrope", value: editorial }
+              - { label: "Creativa — Space Grotesk", value: creative }
+              - { label: "Profesional — Merriweather + Roboto", value: professional }
+              - { label: "Lujo — Cinzel + Source Sans 3", value: luxury }
   - name: blog_es
     label: "Blog · Español"
     folder: src/content/blog/es
