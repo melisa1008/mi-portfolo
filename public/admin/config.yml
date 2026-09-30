@@ -14,6 +14,11 @@ collections:
         label: "Fuentes de la web"
         file: src/data/appearance.json
         fields:
+          - label: "Foto de perfil"
+            name: profileImage
+            widget: image
+            required: false
+            hint: "Sube una foto vertical o cuadrada. Se mostrará en la portada."
           - label: "Combinación de fuentes"
             name: fontStyle
             widget: select

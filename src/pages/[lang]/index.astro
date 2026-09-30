@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { isLang, languages, localeFromId, slugFromId, t, formatDate } from '../../lib/i18n';
+import appearance from '../../data/appearance.json';
 export function getStaticPaths() { return languages.map(lang => ({ params: { lang } })); }
 const { lang } = Astro.params;
 if (!isLang(lang)) return Astro.redirect('/es/');
@@ -10,7 +11,7 @@ const blog = (await getCollection('blog', ({ id, data }) => localeFromId(id) ===
 const projects = (await getCollection('projects', ({ id, data }) => localeFromId(id) === lang && data.featured)).slice(0, 2);
 ---
 <BaseLayout lang={lang} title={`Melisa — ${text.home}`}>
-  <section class="hero"><div class="hero-copy"><p class="eyebrow">Melisa · EDT de Morges</p><h1>{text.hero}</h1><p>{text.intro}</p><div class="hero-notes"><span>organizada</span><span>✦</span><span>centrada</span><span>trabajadora</span></div></div><div class="hero-art"><i class="sparkle sparkle-one">✦</i><i class="sparkle sparkle-two">✿</i><img src="/profile-placeholder.svg" alt="Espacio para la foto de perfil de Melisa" /><span class="photo-label">Portfolio · 2026</span></div></section>
+  <section class="hero"><div class="hero-copy"><p class="eyebrow">Melisa · EDT de Morges</p><h1>{text.hero}</h1><p>{text.intro}</p><div class="hero-notes"><span>organizada</span><span>✦</span><span>centrada</span><span>trabajadora</span></div></div><div class="hero-art"><i class="sparkle sparkle-one">✦</i><i class="sparkle sparkle-two">✿</i><img src={appearance.profileImage || '/profile-placeholder.svg'} alt={appearance.profileImage ? 'Foto de perfil de Melisa' : 'Espacio para la foto de perfil de Melisa'} /><span class="photo-label">Portfolio · 2026</span></div></section>
   <section class="section"><div class="section-heading"><p class="eyebrow">01 / {text.writing}</p><h2>{text.latest}</h2><a class="button-link" href={`/${lang}/blog/`}>{text.allArticles} →</a></div><div class="grid">{blog.map(post => <article class="card"><p class="card-meta">{formatDate(post.data.date, lang)}</p><h3><a href={`/${lang}/blog/${slugFromId(post.id)}/`}>{post.data.title}</a></h3><p>{post.data.description}</p><a class="button-link" href={`/${lang}/blog/${slugFromId(post.id)}/`}>{text.read} →</a></article>)}</div></section>
   <section class="section"><div class="section-heading"><p class="eyebrow">02 / {text.portfolio}</p><h2>{text.work}</h2><a class="button-link" href={`/${lang}/projects/`}>{text.allProjects} →</a></div><div class="grid">{projects.map(project => <article class="card"><p class="card-meta">{project.data.tags.join(' · ')}</p><h3><a href={`/${lang}/projects/${slugFromId(project.id)}/`}>{project.data.title}</a></h3><p>{project.data.description}</p><a class="button-link" href={`/${lang}/projects/${slugFromId(project.id)}/`}>{text.view} →</a></article>)}</div></section>
 </BaseLayout>
