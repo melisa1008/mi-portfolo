@@ -19,6 +19,20 @@ collections:
             widget: image
             required: false
             hint: "Sube una foto vertical o cuadrada. Se mostrará en la portada."
+          - label: "Encuadre de la foto"
+            name: profileFocus
+            widget: select
+            default: center
+            options:
+              - { label: "Centro", value: center }
+              - { label: "Arriba", value: top }
+              - { label: "Abajo", value: bottom }
+              - { label: "Izquierda", value: left }
+              - { label: "Derecha", value: right }
+              - { label: "Esquina superior izquierda", value: top-left }
+              - { label: "Esquina superior derecha", value: top-right }
+              - { label: "Esquina inferior izquierda", value: bottom-left }
+              - { label: "Esquina inferior derecha", value: bottom-right }
           - label: "Combinación de fuentes"
             name: fontStyle
             widget: select
